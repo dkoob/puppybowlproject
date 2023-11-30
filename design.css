@@ -1,0 +1,48 @@
+body {
+    background-color: #ebebeb;
+}
+
+div {
+    background-color: white;
+}
+
+.header {
+    text-align: center;
+    padding: 50px 35px 50px 35px;
+    margin: 50px;
+    font-size: x-large;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    border-radius: 50px;
+    color: #565656;
+}
+
+.container {
+    display: flex;
+    height: auto;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin: 50px;
+    border-radius: 50px;
+}
+
+.puppy {
+    background-color: #ebebeb;
+    height: 70px;
+    width: 26%;
+    margin: 40px;
+    height: 500px;
+    border-radius: 40px;
+    text-align: center;
+}
+
+.puppycontent {
+    color: #565656;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+img {
+    height: 70%;
+    width: 70%;
+    border-radius: 25px;
+}
+
