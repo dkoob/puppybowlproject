@@ -2,12 +2,7 @@ const container = document.querySelector(".container")
 let puppies = []
 
 window.addEventListener("hashchange", () => {
-    const hash = window.location.hash.slice(1)
-    if (hash === "mainsite"){
-        renderAll()
-    }else{
-        render()
-    }
+    render()
 })
 
 async function fetchPuppies() {
@@ -15,35 +10,70 @@ async function fetchPuppies() {
     const data = await response.json()
     puppies = data.data.players
     console.log(puppies)
-    renderAll()
+    render()
 }
 
 function render() {
     const currentWindow = window.location.hash.slice(1)
+    console.log("The current window is: " + currentWindow)
     const singlePuppy = puppies.find((puppy) => {
         return(puppy.name === currentWindow)
     })
-    container.innerHTML = singlePuppy ? "" : renderAll()
+    if (singlePuppy) {
+        container.innerHTML = ""
+        container.innerHTML = `
+        <div class="singlePup">
+            <br>
+            <span class="puppycontent">
+                <h1>${singlePuppy.name}</h1>
+                <p>"${singlePuppy.breed}</p>
+                <p>This puppies field status is - ${singlePuppy.status}</p>
+            <span>
+                <img class="singlePupPic" src="${singlePuppy.imageUrl}"/>
+            </span>
+        </div>
+        `
+    }else{
+        const puppyList = puppies.map((puppy) => {
+            return `
+            <div class="puppy">
+                <br>
+                <span class="puppycontent">
+                    <a href="#${puppy.name}"><h2>${puppy.name}</h2></a>
+                </span>
+                <span class="puppycontent">
+                    <p>Click for more information on this player!</p>
+                </span>
+                <span>
+                    <img src="${puppy.imageUrl}"/>
+                </span>
+            </div>
+            `
+        })
+        container.innerHTML = puppyList.join("");
+    }
 }
 
 fetchPuppies()
 
-function renderAll() {
-    const puppyList = puppies.map((puppy) => {
-        return `
-        <div class="puppy">
-            <br>
-            <span class="puppycontent">
-                <a href="#${puppy.name}"><h2>${puppy.name}</h2></a>
-            </span>
-            <span class="puppycontent">
-                <p>Click for more information on this player!</p>
-            </span>
-            <span>
-                <img src="${puppy.imageUrl}"/>
-            </span>
-        </div>
-        `
-    })
-    container.innerHTML = puppyList.join("");
-}
+// function renderAll() {
+//     const puppyList = puppies.map((puppy) => {
+//         return `
+//         <div class="puppy">
+//             <br>
+//             <span class="puppycontent">
+//                 <a href="#${puppy.name}"><h2>${puppy.name}</h2></a>
+//             </span>
+//             <span class="puppycontent">
+//                 <p>Click for more information on this player!</p>
+//             </span>
+//             <span>
+//                 <img src="${puppy.imageUrl}"/>
+//             </span>
+//         </div>
+//         `
+//     })
+//     container.innerHTML = puppyList.join("");
+// }
+
+// old render all function

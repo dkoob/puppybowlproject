@@ -27,7 +27,6 @@ div {
 
 .puppy {
     background-color: #ebebeb;
-    height: 70px;
     width: 26%;
     margin: 40px;
     height: 500px;
@@ -44,5 +43,23 @@ img {
     height: 70%;
     width: 70%;
     border-radius: 25px;
+}
+
+.singlePup {
+    display: inline-flex;
+    background-color: #ebebeb;
+    width: 75%;
+    margin: 40px;
+    height: 75%;
+    border-radius: 40px;
+    text-align: center;
+    flex-direction:column;
+}
+
+.singlePupPic {
+    height: 30%;
+    width: 30%;
+    border-radius: 50px;
+    margin: 50px;
 }
 
